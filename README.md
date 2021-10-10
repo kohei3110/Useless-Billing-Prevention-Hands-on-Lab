@@ -48,18 +48,18 @@ October 2021
 
     - リソースグループの作成
 
-        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)]() 
+        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2Fkohei3110%2FUseless-Billing-Prevention-Hands-on-Lab%2Fmaster%2Fazure-templates%2F00-resource-group%2Fresource-group.json) 
     - 仮想マシンの作成
 
-        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)]() 
+        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2Fkohei3110%2FUseless-Billing-Prevention-Hands-on-Lab%2Fmaster%2Fazure-templates%2F01-virtual-machine%2Fvirtual-machine.json) 
 
     - Azure Automation アカウントの作成
 
-        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)]() 
+        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2Fkohei3110%2FUseless-Billing-Prevention-Hands-on-Lab%2Fmaster%2Fazure-templates%2F02-azure-automation%2Fazure-automation.json) 
 
     - Azure Functions の作成
 
-        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)]() 
+        [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2Fkohei3110%2FUseless-Billing-Prevention-Hands-on-Lab%2Fmaster%2Fazure-templates%2F03-azure-functions%2Fazure-functions.json) 
 
 ### **2. ハンズオン内容の実施**
 
