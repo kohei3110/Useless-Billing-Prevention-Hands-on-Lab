@@ -27,7 +27,7 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2020-12-01",
-            "name": "concat(parameters('functionName'), '/web')",
+            "name": "[concat(parameters('functionName'), '/web')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites',parameters('functionName'))]"
