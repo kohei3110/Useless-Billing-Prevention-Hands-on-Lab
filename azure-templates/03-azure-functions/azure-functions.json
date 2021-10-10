@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "functionName": {
+            "type": "string",
+            "defaultValue": "function-handson-lab-japaneast-001",
+            "metadata": {
+                "description": "関数アプリ名"
+            }
+        }
+    },
+    "variables": {
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2020-12-01",
+            "name": "[parameters('functionName')]",
+            "location": "[resourceGroup().location]",
+            "kind": "functionapp",
+            "properties": {
+                "enabled": true                
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2020-12-01",
+            "name": "concat(parameters('functionName'), '/web')",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites',parameters('functionName'))]"
+            ],
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php"
+                ],
+                "powerShellVersion": "~7",
+                "remoteDebuggingEnabled": false,
+                "requestTracingEnabled": false,
+                "httpLoggingEnabled": false,
+                "logsDirectorySizeLimit": 35,
+                "publishingUsername": "$function-handson-lab-japaneast-001",
+                "alwaysOn": false,
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false
+                    }
+                ],
+                "loadBalancing": "LeastRequests"
+
+            }
+        }
+    ]
+}

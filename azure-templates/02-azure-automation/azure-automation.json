@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationAccountName": {
+            "type": "string",
+            "defaultValue": "automation-handson-lab-japaneast-001",
+            "metadata": {
+                "description": "Azure Automation アカウント名"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Automation/automationAccounts",
+            "apiVersion": "2020-01-13-preview",
+            "name": "[parameters('automationAccountName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "sku": {
+                    "name": "Basic"
+                },
+                "encryption": {
+                    "keySource": "Microsoft.Automation",
+                    "identity": {}
+                }
+            }
+        }
+    ]
+}
