@@ -1,0 +1,64 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {},
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {},
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "data": {
+                                "properties": {
+                                    "Budget": {
+                                        "type": "string"
+                                    },
+                                    "BudgetCreator": {
+                                        "type": "string"
+                                    },
+                                    "BudgetName": {
+                                        "type": "string"
+                                    },
+                                    "BudgetStartDate": {
+                                        "type": "string"
+                                    },
+                                    "BudgetType": {
+                                        "type": "string"
+                                    },
+                                    "NotificationThresholdAmount": {
+                                        "type": "string"
+                                    },
+                                    "ResourceGroup": {
+                                        "type": "string"
+                                    },
+                                    "SpendingAmount": {
+                                        "type": "string"
+                                    },
+                                    "SubscriptionId": {
+                                        "type": "string"
+                                    },
+                                    "SubscriptionName": {
+                                        "type": "string"
+                                    },
+                                    "Unit": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "schemaId": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {}
+}

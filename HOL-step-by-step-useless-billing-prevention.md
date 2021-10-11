@@ -4,17 +4,17 @@ Useless Billing Prevention
 Hands-on lab  
 October 2021
 
-## To Do
-
-- 2-2 ログインできない問題
-
 <br />
 
 **Contents**
 
 ## **1. 仮想マシン停止の自動化**
 
-- **本手順では、仮想マシンを自動停止する手順を実行します。仮想マシンが起動していることを確認してから、以下の手順を進めてください。**
+```
+本手順では、仮想マシンを自動停止する手順を実行します。仮想マシンが起動していることを確認してから、以下の手順を進めてください。
+```
+
+![alt text](./images/01-vm-auto-shutdown-architecture.png)
 
 - 作成した仮想マシンを選択
 
@@ -30,6 +30,8 @@ October 2021
 - **保存**をクリック
 
 ## **2. Azure Automation を用いた仮想マシン起動・停止の自動化**
+
+![alt text](./images/02-automation-architecture.png)
 
 ### **2-1. カスタム Runbook を作成**
 
@@ -153,7 +155,11 @@ Azure Automation で独自の Runbook およびモジュールを作成するの
 
 ## **3. Azure Functions を用いた仮想マシン起動・停止の自動化**
 
-- **本手順では、仮想マシンを自動起動するスクリプトを使用します。仮想マシンが停止していることを確認してから以下の手順を進めてください。**
+```
+本手順では、仮想マシンを自動起動するスクリプトを使用します。仮想マシンが停止していることを確認してから以下の手順を進めてください。
+```
+
+![alt text](./images/03-functions-architecture.png)
 
 -. システム割り当てマネージド ID を有効化し、**保存**をクリック
 
@@ -265,3 +271,77 @@ Azure Automation で独自の Runbook およびモジュールを作成するの
 - タグ `ENV: PROD` を付与した仮想マシンは起動していないことを確認
 
 ![alt text](./images/03-functions-test-function-4.png)
+
+## **4. コストのアラートによる想定以上の課金防止**
+
+```
+本手順では、コストのアラートを設定し、設定した請求額に達すると通知を飛ばす仕組みを構成します。
+手順内では、メールによる設定のみを構成していますが、Logic Apps と組み合わせることで、Teams や Slack へ通知を送信することも可能です。
+```
+
+![alt text](./images/04-costalert-architecture.png)
+
+- **コストの管理と請求**を検索
+
+![alt text](./images/04-costalert-search-costmanagement.png)
+
+- **概要**ページにて**コスト管理**をクリック
+
+![alt text](./images/04-costalert-cost-management.png)
+
+- **コストのアラート**をクリック
+
+![alt text](./images/04-costalert-cost-management-cost-alert.png)
+
+- **追加**をクリック
+
+![alt text](./images/04-costalert-cost-management-add-cost-alert.png)
+
+- **予算の作成**タブにて以下の項目を入力し、**次へ**をクリック
+
+    - 予算のスコープ
+        
+        - スコープ: 任意のサブスクリプション
+        - フィルター: なし
+
+    - 予算の詳細
+    
+        - 名前: `Cost-Alert`
+        - リセット期間: `課金月`
+        - 作成日: 任意の値
+        - 有効期限: 任意の値
+
+    - 予算額
+
+        - 金額: `10000`
+
+    ![alt text](./images/04-costalert-cost-management-add-cost-alert-1.png)
+
+    ![alt text](./images/04-costalert-cost-management-add-cost-alert-2.png)
+
+
+- **通知の設定**タブにて以下の項目を入力し、**作成**をクリック
+
+    - 警告条件
+
+        - 種類: `予測`
+        - 予算の割合: `70`
+        - アクショングループ: `なし`
+
+    - アラートの受信者（メール）
+
+        - アラートの受信者: 通知先のメールアドレス
+
+    - 言語の設定
+
+        - 言語: `既定`
+
+    ![alt text](./images/04-costalert-cost-management-add-cost-alert-3.png)
+    
+    ![alt text](./images/04-costalert-cost-management-add-cost-alert-4.png)
+
+```
+Azure リソースに対する請求額が閾値を超えると、以下のようなメールが送信されます。
+```
+
+![alt text](./images/04-costalert-mail.png)
