@@ -182,6 +182,7 @@ Azure Automation で独自の Runbook およびモジュールを作成するの
 - 以下の環境変数を追加し、**保存**をクリック
 
     - resourceGroup: `<起動対象の仮想マシンが存在するリソースグループ名>`
+    - WEBSITE_TIME_ZONE: 'Asia/Tokyo'
 
     ![alt text](./images/03-functions-add-environment-variables.png)
 
